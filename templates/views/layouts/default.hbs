@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Better Engineers</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+	<link href="/styles/site.css" rel="stylesheet">
+	<!-- ** Plugins Needed for the Project ** -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+	<!-- slick slider -->
+	<link rel="stylesheet" href="/plugins/slick/slick.css">
+	<!-- themefy-icon -->
+	<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+
+	{{!-- This file provides the default styling for the KeystoneJS Content Editor
+			- only renders when user is logged in and admin--}}
+	{{{isAdminEditorCSS user}}}
+
+	{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8 --}}
+	<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<div id="header">
+		<div class="container">
+			<div role="navigation" class="navbar navbar-expand-lg navbar-light">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" data-toggle="collapse" data-target=".navbar-collapse"
+							class="navbar-toggler border-0" aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+							<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+						</button>
+						<a href="/" class="navbar-brand"><img class="img-fluid" src="/images/logo.png" alt="logo"></a>
+					</div>
+					<div class="collapse navbar-collapse text-center" id="navogation">
+						<ul class="nav navbar-nav navbar-left">
+							{{# each navLinks}}
+							<li {{#ifeq ../section key}}class="active" {{else}}{{/ifeq}}>
+								<a href="{{ href }}">{{ label }}</a>
+							</li>
+							{{/each}}
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							{{#if user}}
+							<li><a href="/keystone/signout">Sign Out</a></li>
+							{{else}}
+							<li><a href="/keystone/signin">Sign In</a></li>
+							{{/if}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="body">
+		<!--
+				Flash messages allow you to display once-off status messages to users, e.g. form
+				validation errors, success messages, etc
+			-->
+		{{#if messages}}
+		<div id="flash-messages" class="container">
+			{{#if messages.info}}
+			<div class="alert alert-info">
+				{{{flashMessages messages.info}}}
+			</div>
+			{{/if}}
+			{{#if messages.success}}
+			<div class="alert alert-success">
+				{{{flashMessages messages.success}}}
+			</div>
+			{{/if}}
+			{{#if messages.warning}}
+			<div class="alert alert-warning">
+				{{{flashMessages messages.warning}}}
+			</div>
+			{{/if}}
+			{{#if messages.error}}
+			<div class="alert alert-danger">
+				{{{flashMessages messages.error}}}
+			</div>
+			{{/if}}
+		</div>
+		{{/if}}
+		<!-- The content block should contain the body of your template's content-->
+		{{{body}}}
+	</div>
+	<div class="container">
+		<div id="footer">
+			<div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <a href="/"><img src="/images/logo.png" alt="logo" class="img-fluid"></a>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Bangalore</li>
+            <li class="font-secondary text-dark">29 Ulsoor road Tydy</li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Tel: +91 9845040026</li>
+            <li class="font-secondary text-dark">Mail: arjun.amrith@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <span class="font-secondary text-dark mr-3">Follow</span>
+          <ul class="list-inline d-inline-block">
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-github"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+		</div>
+	</div>
+	{{!--
+			//- jQuery 1.11.3 is included by default, and required by both Bootstrap
+			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
+			//- you can upgrade to 2.1.4 (also bundled) for better performance.
+		--}}
+	<script src="/js/jquery/jquery-1.11.3.min.js"></script>
+	{{!--
+			//- Customise which Bootstrap javascript files are served by including
+			//- them specifically here, instead of bootstrap-3.3.5.min.js
+		--}}
+	<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+
+	<!-- slick slider -->
+	<script src="/plugins/slick/slick.min.js"></script>
+	<!-- masonry -->
+	<script src="/plugins/masonry/masonry.js"></script>
+	<!-- instafeed -->
+	<script src="/plugins/instafeed/instafeed.min.js"></script>
+	<!-- smooth scroll -->
+	<script src="/plugins/smooth-scroll/smooth-scroll.js"></script>
+	<!-- headroom -->
+	<script src="/plugins/headroom/headroom.js"></script>
+	<!-- reading time -->
+	<script src="/plugins/reading-time/readingTime.min.js"></script>
+	<script src="/js/script.js"></script>
+	{{{isAdminEditorJS user}}}
+</body>
+
+</html>

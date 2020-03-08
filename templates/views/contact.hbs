@@ -1,0 +1,56 @@
+<div class="container">
+	<h1>Contact Us</h1>
+</div>
+<div class="container">
+	<!-- preloader -->
+  <div class="preloader">
+    <div class="loader">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- /preloader -->
+	<div class="row">
+		<div class="col-sm-8 col-md-6">
+			{{#if enquirySubmitted}}
+			<h3>Thanks for getting in touch.</h3>
+			{{else}}
+			<form method="post" class="row">
+				<input type="hidden" name="action" value="contact">
+				<div class="form-group col-lg-6 {{#if validationErrors.name}}has-error{{/if}}">
+					<label>Name</label>
+					<input type="text" name="name.full"  class="form-control mb-4" value="{{formData.[name.full]}}">
+				</div>
+				<div class="form-group col-lg-6 {{#if validationErrors.email}}has-error{{/if}}">
+					<label>Email</label>
+					<input type="email" name="email" class="form-control mb-4" value="{{formData.email}}">
+				</div>
+				<div class="form-group col-lg-6">
+					<label>Phone</label>
+					<input type="text" name="phone" placeholder="(optional)" class="form-control mb-4" value="{{formData.phone}}">
+				</div>
+				<div class="form-group col-lg-6 {{#if validationErrors.enquiryType}}has-error{{/if}}">
+					<label>What are you contacting us about?</label>
+					<select name="enquiryType" class="form-control mb-4">
+						<option value="">(select one)</option>
+						{{#each enquiryTypes}}
+						<option value="{{value}}">{{label}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group col-lg-12 {{#if validationErrors.message}}has-error{{/if}} ">
+					<label>Message</label>
+					<textarea name="message" placeholder="Leave us a message..." rows="4" class="form-control mb-4">{{formData.message}}</textarea>
+				</div>
+				<div class="form-actions col-12">
+					<button type="submit" class="btn btn-primary">Send</button>
+				</div>
+			</form>
+			{{/if}}
+		</div>
+	</div>
+</div>
