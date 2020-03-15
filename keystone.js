@@ -14,10 +14,10 @@ keystone.init({
 	'name': 'Better Engineers',
 	'brand': 'Better Engineers',
 
-	'sass': '/public',
-	'static': '/public',
-	'favicon': '/public/favicon.ico',
-	'views': '/templates/views',
+	// 'sass': '/public',
+	'static': './public',
+	'favicon': './public/favicon.ico',
+	'views': './templates/views',
 	'view engine': '.hbs',
 
 	'custom engine': handlebars.create({
@@ -28,7 +28,7 @@ keystone.init({
 		extname: '.hbs',
 	}).engine,
 
-	'emails': '/templates/emails',
+	'emails': './templates/emails',
 
 	'auto update': true,
 	'session': true,
