@@ -103,3 +103,8 @@ dist
 # TernJS port file
 .tern-port
 updates/0.0.1-admins.js
+
+
+*.scss
+
+
